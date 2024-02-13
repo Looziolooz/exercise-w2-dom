@@ -24,23 +24,32 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
 
-  // Function to change the theme 
-  function changeTheme(theme) {
+function changeTheme(theme) {
+  box.style.transition = 'background-color 0.5s ease-in-out';
+  box.classList.add('color-transition');
+  setTimeout(function() {
       box.style.backgroundColor = getThemeColor(theme);
-      console.log(`Theme changed to ${theme}`);
-  }
+      setTimeout(function() {
+          box.classList.remove('color-transition');
+      }, 500); // Adjust the delay to match the transition duration
+  }, 10); // Tiny pause before applying the transition
+}
 
   // Function to get the color based on the selected theme
   function getThemeColor(theme) {
       switch (theme) {
           case 'dark':
-              return 'darkcyran';
+              return 'darkcyan';
           case 'light':
               return 'lightcoral';
           case 'crazy':
-              return 'purple'; 
+              return 'yellow'; 
           default:
               return 'lightgreen'; 
       }
   }
 });
+
+
+
+
